@@ -5,6 +5,7 @@ from constants import *
 from NFA import *
 from DFA import *
 from DFA_DIRECT import *
+from LEXER import *
 import uuid
 import sys
 
@@ -47,6 +48,19 @@ while flag:
             newAFD.showDFADirect(file_name)
             Grapher.drawDirectDFA(newAFD,file_name)
             Utils.simulate_exp(newAFD)
+    elif opc == "4":
+        file_name = Utils.create_filename()
+        file = input("Input the file name without of the .yal in the folder Yalex: ")
+        file = file + ".yal"
+        yalex = Lexer(file)
+        # add the yalex to txt 
+        finalExp = yalex.getFinalExp()
+        postfixExp = InfixToPostfix(finalExp)
+        postfixExp.toPostfix()
+        tree = Tree(postfixExp.postfix)
+        tree.generateTree(tree.tree)
+        tree.showTable(file_name)
+        
     elif opc !="":
       print("\nWrong option")
     else:
