@@ -25,7 +25,7 @@ class State:
 class NFA:
     """
     Representa el NFA:
-    -> donde q es el conjunto de estados
+    -> q es el conjunto de estados
     -> expr es una expresión regular que define el lenguaje aceptado por el NFA
     -> alphabet es el alfabeto del lenguaje
     -> q0 es el estado inicial
@@ -40,9 +40,7 @@ class NFA:
         self.f = f
         self.transitions = transitions
 
-    """
-    True if ther is any final state, False otherwise
-    """
+    # true if the is any final state else False
     def simulate(self, input_string):
         current_states = self.e_closure(set([self.q0]))
         for symbol in input_string:
@@ -84,7 +82,7 @@ class NFA:
                     f.write(f'{start} -> {symbol} -> {accept}')
         return (self)
     
-def thompsonBuild(postfix_expr):
+def build_thompson(postfix_expr):
     stack = []
     state_counter = 0
 

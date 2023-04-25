@@ -19,12 +19,12 @@ class Utils():
     def get_infix_expression():
         expression = input('Enter infix expression: ')
         #expression = expression.replace('ε','ε')
-        errors = InfixToPostfix(expression).checkErrors()
+        errors = Convert_Infix_Postfix(expression).checkErrors()
         if errors:
             print(errors)
             return False
         
-        postfix_exp = InfixToPostfix(expression)
+        postfix_exp = Convert_Infix_Postfix(expression)
         postfix_exp.replaceOperators()
         postfix_exp.toPostfix()
         print("Postfix expression: ", postfix_exp)

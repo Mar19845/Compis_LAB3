@@ -23,7 +23,7 @@ while flag:
         file_name = Utils.create_filename()
         postfix_exp = Utils.get_infix_expression()
         if postfix_exp is not False:
-            nfaBuilt = thompsonBuild(postfix_exp.postfix)
+            nfaBuilt = build_thompson(postfix_exp.postfix)
             nfaBuilt.showNFA(file_name)
             Grapher.drawNFA(nfaBuilt,file_name)
             Utils.simulate_exp(nfaBuilt)
@@ -32,10 +32,10 @@ while flag:
         file_name = Utils.create_filename()
         postfix_exp = Utils.get_infix_expression()
         if postfix_exp is not False:
-            nfaBuilt = thompsonBuild(postfix_exp.postfix)
+            nfaBuilt = build_thompson(postfix_exp.postfix)
             dfa = DFASubsets(nfaBuilt)
-            newAFD = dfa.buildDFASubsets()
-            newAFD.showSubsetDFA(file_name)
+            newAFD = dfa.create_DFASubset()
+            newAFD.showDFASubset(file_name)
             Grapher.drawSubsetDFA(newAFD,file_name)
             Utils.simulate_exp(newAFD)
     elif opc == "3":
@@ -55,11 +55,11 @@ while flag:
         yalex = Lexer(file)
         # add the yalex to txt 
         finalExp = yalex.getFinalExp()
-        postfixExp = InfixToPostfix(finalExp)
+        postfixExp = Convert_Infix_Postfix(finalExp)
         postfixExp.toPostfix()
         tree = Tree(postfixExp.postfix)
         tree.generateTree(tree.tree)
-        tree.showTable(file_name)
+        tree.create_tree_table(file_name)
         
     elif opc !="":
       print("\nWrong option")

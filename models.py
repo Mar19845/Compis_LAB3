@@ -2,7 +2,7 @@ from typing import List, Dict
 from constants import *
 from utils import *
 
-class InfixToPostfix:
+class Convert_Infix_Postfix:
     def __init__(self, regex):
         self.regex = regex
         self.postfix = []
